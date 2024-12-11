@@ -123,6 +123,3 @@ This project demonstrates a basic REST API built with Node.js and Express. It us
    * Sets the port to 3000.
    * Defines a route handler for GET requests to the `/greet` path.
    * Starts the server and listens for incoming requests.
-```
-
-This improved README provides a clear and comprehensive guide for setting up and understanding your project. Remember to replace `{{username}}` and `{{repository}}` with your actual GitHub username and repository name.
