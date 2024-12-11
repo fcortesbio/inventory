@@ -1,16 +1,20 @@
-# initialize proyect
+# 1. Navigate to project folder and created local repository
+
+
+## initialize proyect
+
 
 
 $ node -v
 $ npm -v
 
-# This command is used to quickly initialize a new Node.js project and create a package.json file with default values.
+## This command is used to quickly initialize a new Node.js project and create a package.json file with default values.
 
 ```
 npm init -y
 ```
 
-# Install npm packages commonly used for Node.js web applications, especially those involving MongoDB and REST-API
+## Install npm packages commonly used for Node.js web applications, especially those involving MongoDB and REST-API
 ```
 npm install express mongoose dotenv cors
 ```
@@ -23,10 +27,14 @@ npm install express mongoose dotenv cors
 
 * cors: This is a middleware for enabling Cross-Origin Resource Sharing (CORS) in your Express application. CORS is a mechanism that allows restricted resources on a web page to be requested from another domain outside the domain from which the first resource was served. This is important for building APIs that can be accessed from different origins (e.g., your frontend running on a different domain).   
 
+
+##  Development dependencies --- alternative to nodemon: Morgan
 ```
 npm install --save-dev nodemon
 ```
 
+
+## Create 
 ```
 touch index.js .env .README.md .gitignore
 ```

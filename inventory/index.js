@@ -1,17 +1,18 @@
-// const express = require('express')
-// const app = express()
-// const port = 3000
-
-// app.get('/', (req, res) => res.send('Hello World!'))
-// app.listen(port, () => console.log(`Example app listening on port ${port}!`)) 
-
+// import Express.js
 const express = require("express");
 
+
+// Create instance from Express
 const app = express()
+
+// select Port
 PORT = 3000; 
+
 app.set("port", PORT)
 
-app.get("/greet", (req, res)=>{
+// .get("/greet,   --> define a route and a 'HTTP-verb' (get) 
+// (req, res) --> define a function and an HTTP 
+app.get("/gr eet", (req, res)=>{
     res.send("Hello, World!")
 })
 
