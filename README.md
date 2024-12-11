@@ -1,4 +1,3 @@
-```markdown
 # Simple REST API with Node.js and Express
 
 This project demonstrates a basic REST API built with Node.js and Express. It uses MongoDB for data storage and includes example routes for creating, reading, updating, and deleting data.
@@ -7,7 +6,8 @@ This project demonstrates a basic REST API built with Node.js and Express. It us
 
 1. **Prerequisites:** Ensure you have `Node.js` and `npm` installed on your machine. You can check by running:
 
-   ```bash
+   ```
+   bash
    node -v && npm -v
    ```
 
