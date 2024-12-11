@@ -1,16 +1,11 @@
 # Ignore dependency directories
 /node_modules/
-/vendor/
 
 # Ignore sensitive information
 .env
 *.pem
 *.key
 *.cert
-
-# Ignore operating system files
-.DS_Store
-Thumbs.db
 
 # Ignore common editor and IDE files
 .vscode/
@@ -19,19 +14,3 @@ Thumbs.db
 *.tmp
 *.bak
 
-# Ignore build artifacts
-/build/
-/dist/
-/target/
-
-
-# Ignore logs and cache files
-*.log
-/logs/
-/tmp/
-/cache/
-
-
-# Ignore specific files or folders for your project
-/config.js
-/database.sqlite
