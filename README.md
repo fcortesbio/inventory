@@ -123,3 +123,11 @@ This project demonstrates a basic REST API built with Node.js and Express. It us
    * Sets the port to 3000.
    * Defines a route handler for GET requests to the `/greet` path.
    * Starts the server and listens for incoming requests.
+
+
+<!-- 12-11-2024 -->
+
+`mkdir controllers models routes`
+
+`touch controllers/helloControllers.js routes/helloRoutes.js`
+
