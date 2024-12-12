@@ -6,8 +6,7 @@ This project demonstrates a basic REST API built with Node.js and Express. It us
 
 1. **Prerequisites:** Ensure you have `Node.js` and `npm` installed on your machine. You can check by running:
 
-   ```
-   bash
+   ```bash
    node -v && npm -v
    ```
 
@@ -130,4 +129,9 @@ This project demonstrates a basic REST API built with Node.js and Express. It us
 `mkdir controllers models routes`
 
 `touch controllers/helloControllers.js routes/helloRoutes.js`
+
+<!-- 
+Normalmente tenemos los modelos para interactuar con la base de datos, y los Servicios para interactuar con APIs
+ -->
+
 
