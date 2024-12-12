@@ -2,18 +2,9 @@
 
 Este proyecto demuestra una API REST básica construida con Node.js y Express. Utiliza MongoDB para el almacenamiento de datos e incluye ejemplos de rutas para crear, leer, actualizar y eliminar datos.
 
-## Introducción
-
-Este proyecto te ayudará a comprender los fundamentos de la creación de una API REST con Node.js y Express. Aprenderás a:
-
-* Configurar un servidor Express.
-* Definir rutas para manejar solicitudes HTTP (GET, POST, PUT, DELETE).
-* Conectar a una base de datos MongoDB usando Mongoose.
-* Implementar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en recursos.
-
 ## Empezando
 
-1. **Prerrequisitos:** Asegúrate de tener `Node.js` y `npm` instalados en tu máquina. Puedes verificarlo ejecutando:
+1. **Prerrequisitos:** Asegúrate de tener `Node.js` y `npm` instalados en tu máquina. Puedes comprobarlo ejecutando:
 
    ```bash
    node -v && npm -v
@@ -25,7 +16,7 @@ Este proyecto te ayudará a comprender los fundamentos de la creación de una AP
    cd ~/proyecto/  # Navega al directorio de tu proyecto
    git init        # Inicializa un repositorio Git local
    git remote add origin [https://github.com/](https://github.com/){{username}}/{{repository}} # Agrega tu repositorio remoto
-   npm init -y     # Inicializa un nuevo proyecto Node.js (la bandera -y acepta todos los valores predeterminados)
+   npm init -y     # Inicializa un nuevo proyecto Node.js (la bandera -y acepta todos los valores por defecto)
    ```
 
 3. **Instala las dependencias:**
@@ -35,7 +26,7 @@ Este proyecto te ayudará a comprender los fundamentos de la creación de una AP
    ```
 
    * **express:** Un framework web rápido y minimalista para Node.js.
-   * **mongoose:** Una biblioteca de Modelado de Datos de Objetos (ODM) para MongoDB y Node.js.
+   * **mongoose:** Una librería de Modelado de Datos de Objetos (ODM) para MongoDB y Node.js.
    * **dotenv:** Carga variables de entorno desde un archivo `.env`.
    * **cors:** Middleware para habilitar el Intercambio de Recursos de Origen Cruzado (CORS).
 
@@ -50,8 +41,7 @@ Este proyecto te ayudará a comprender los fundamentos de la creación de una AP
 5. **Crea los archivos del proyecto:**
 
    ```bash
-   mkdir controllers models routes
-   touch index.js .env .README.md .gitignore controllers/helloControllers.js routes/helloRoutes.js
+   touch index.js .env .README.md .gitignore
    ```
 
 6. **Configura .gitignore y sube al repositorio:**
@@ -67,12 +57,14 @@ Este proyecto te ayudará a comprender los fundamentos de la creación de una AP
    ```
    # Ignora los directorios de dependencias
    /node_modules/
+
    # Ignora la información sensible
    .env
    *.pem
    *.key
    *.cert
-   # Ignora archivos comunes del editor e IDE
+
+   # Ignora los archivos comunes del editor e IDE
    .vscode/
    *.swp
    *.swo
@@ -97,7 +89,7 @@ Este proyecto te ayudará a comprender los fundamentos de la creación de una AP
 
    Es una buena práctica crear una rama separada para el desarrollo para mantener tu rama principal estable.
 
-7. **Configura los fundamentos del backend:**
+7. **Configura las bases del backend:**
 
    Abre tu archivo `index.js`:
 
@@ -111,10 +103,13 @@ Este proyecto te ayudará a comprender los fundamentos de la creación de una AP
    const express = require("express");
    const app = express(); 
    const PORT = 3000;
+
    app.set("port", PORT); // Establece el puerto (buena práctica para la configuración)
+
    app.get("/greet", (req, res) => { 
-       res.send("¡Hola, Mundo!");
+       res.send("Hello, World!");
    });
+
    app.listen(PORT, () => {
        console.log(`Escuchando en el puerto ${PORT}`);
    });
@@ -125,44 +120,97 @@ Este proyecto te ayudará a comprender los fundamentos de la creación de una AP
    * Importa el módulo Express.js.
    * Crea una instancia de aplicación Express.
    * Establece el puerto en 3000.
-   * Define un manejador de rutas para solicitudes GET a la ruta `/greet`.
+   * Define un manejador de rutas para las solicitudes GET a la ruta `/greet`.
    * Inicia el servidor y escucha las solicitudes entrantes.
 
-## Estructura del proyecto
+8. **Crea la estructura del proyecto:**
 
-```
-├── controllers
-│   └── helloControllers.js
-├── routes
-│   └── helloRoutes.js
-├── index.js
-├── .env
-├── .gitignore
-└── README.md
+   ```bash
+   mkdir controllers models routes  # Crea directorios para controladores, modelos y rutas
+   touch controllers/holaControllers.js routes/holaRoutes.js  # Crea archivos para controladores y rutas
+   ```
 
-```
+   Esto crea una estructura básica para tu proyecto, separando las responsabilidades y mejorando la organización.
 
-* **controllers:** Contiene la lógica para manejar las solicitudes a las rutas.
-* **models:** Define los esquemas de Mongoose para tus datos.
-* **routes:** Define las rutas de tu API y las asocia a los controladores.
-* **index.js:** Punto de entrada principal de tu aplicación.
-* **.env:** Almacena variables de entorno (como la cadena de conexión de la base de datos).
-* **.gitignore:** Especifica qué archivos ignorar al subir al repositorio.
+   **Explicación de la estructura del proyecto:**
 
+   * **controllers:** Este directorio contendrá la lógica para manejar las solicitudes a tu API. Los controladores normalmente interactuarán con los modelos para recuperar o modificar datos y luego enviar respuestas al cliente.
+   * **models:** Este directorio definirá la estructura de tus datos y cómo se almacenan en la base de datos (en este caso, MongoDB). Los modelos representan las entidades en tu aplicación (por ejemplo, usuarios, productos, publicaciones).
+   * **routes:** Este directorio definirá los endpoints de tu API y los mapeará a funciones específicas del controlador. Las rutas determinan cómo las diferentes solicitudes HTTP (GET, POST, PUT, DELETE) son manejadas por tu aplicación.
 
-## Próximos pasos
+   Esta estructura organizada hace que tu código sea más fácil de entender, mantener y escalar a medida que tu proyecto crece.
 
-* Implementar la lógica para conectar a la base de datos MongoDB.
-* Definir modelos de datos con Mongoose.
-* Crear rutas para las operaciones CRUD.
-* Escribir pruebas para asegurar la calidad del código.
-* Implementar autenticación y autorización si es necesario.
+9. **Implementa el endpoint de la API:**
 
-## Contribuciones
+   Ahora, vamos a crear el endpoint de la API. Empezaremos con un ejemplo simple de "Hola, Mundo!".
 
-Las contribuciones son bienvenidas. Por favor, crea un "fork" del repositorio, realiza tus cambios y envía una solicitud de extracción ("pull request").
+   * **`controllers/holaControllers.js`:**
 
+     ```javascript
+     // Exporta la función `holaMundo`, haciéndola disponible para su uso en otros módulos (como tu archivo de rutas).
+     exports.holaMundo = (req, res) => { 
+         console.log("hola desde el controlador"); // Registra un mensaje en la consola.
+         res.send("Hola mundo desde el controlador"); // Envía la respuesta "Hola mundo desde el controlador" al cliente.
+     };
+     ```
 
-## Licencia
+   * **`routes/holaRoutes.js`:**
 
-Este proyecto está bajo la Licencia MIT.
+     ```javascript
+     // Importa el framework Express.js
+     const express = require("express");
+
+     // Crea un nuevo objeto router. Esto te permite definir rutas de forma modular.
+     const router = express.Router();
+
+     // Importa el controlador que contiene la lógica para manejar las solicitudes
+     const holaController = require("../controllers/holaControllers"); 
+
+     // Define una ruta para las solicitudes GET a la ruta '/test'.
+     // Esta ruta es manejada por la función `holaMundo` en el `holaController`.
+     router.get("/test", holaController.holaMundo); 
+
+     // Exporta el router para que pueda ser utilizado en otras partes de tu aplicación (como index.js)
+     module.exports = router;
+     ```
+
+   * **`index.js`:**
+
+     ```javascript
+     // Importa el framework Express.js
+     const express = require("express");
+
+     // Importa las rutas definidas en holaRoutes.js
+     const holaRoutes = require("./routes/holaRoutes"); 
+
+     // Crea una instancia de la aplicación Express
+     const app = express(); 
+
+     // Define el número de puerto para el servidor
+     const PORT = 3000; 
+
+     // Establece la propiedad 'port' en la configuración de la aplicación Express (bueno para la configuración)
+     app.set("port", PORT); 
+
+     // Define una ruta para las solicitudes GET a la ruta '/hola'
+     app.get("/hola", (req, res) => {
+         res.send("hola mundo"); // Envía la respuesta "hola mundo"
+     });
+
+     // Monta el router holaRoutes en la ruta '/api/hola'. 
+     // Esto significa que todas las rutas definidas en holaRoutes.js tendrán el prefijo '/api/hola'
+     app.use("/api/hola", holaRoutes); 
+
+     // Inicia el servidor y escucha en el puerto especificado
+     app.listen(PORT, () => {
+         console.log(`Escuchando en el puerto ${PORT}`); // Registra un mensaje en la consola
+     });
+     ```
+
+**Explicación:**
+
+* Definimos una función de controlador (`holaMundo`) en `holaControllers.js` para manejar la lógica de nuestro endpoint de la API.
+* En `holaRoutes.js`, creamos un router y definimos una ruta para las solicitudes GET a `/test`. Esta ruta está vinculada a la función del controlador `holaMundo`.
+* En `index.js`, montamos el router `holaRoutes` en la ruta `/api/hola`. Esto significa que la ruta completa para acceder a nuestro endpoint será `/api/hola/test`.
+
+Este ejemplo demuestra un enfoque básico pero bien estructurado para construir endpoints de API en Express.js. Separa las responsabilidades mediante el uso de controladores y rutas, lo que hace que tu código sea más organizado y mantenible.
