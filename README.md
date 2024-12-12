@@ -123,12 +123,96 @@ This project demonstrates a basic REST API built with Node.js and Express. It us
    * Defines a route handler for GET requests to the `/greet` path.
    * Starts the server and listens for incoming requests.
 
+8. **Create Project Structure:**
 
-<!-- 12-11-2024 -->
+   ```bash
+   mkdir controllers models routes  # Create directories for controllers, models, and routes
+   touch controllers/holaControllers.js routes/holaRoutes.js  # Create files for controllers and routes
+   ```
 
-`mkdir controllers models routes`
+   This creates a basic structure for your project, separating concerns and improving organization.
 
-`touch controllers/helloControllers.js routes/helloRoutes.js`
+   **Explanation of Project Structure:**
+
+   * **controllers:** This directory will contain the logic for handling requests to your API. Controllers will typically interact with models to retrieve or modify data and then send responses back to the client.
+   * **models:** This directory will define the structure of your data and how it is stored in the database (in this case, MongoDB). Models represent the entities in your application (e.g., users, products, posts).
+   * **routes:** This directory will define the endpoints of your API and map them to specific controller functions. Routes determine how different HTTP requests (GET, POST, PUT, DELETE) are handled by your application.
+
+   This organized structure makes your code easier to understand, maintain, and scale as your project grows.
+
+9. **Implement the API Endpoint:**
+
+   Now, let's create the actual API endpoint. We'll start with a simple "Hello, World!" example.
+
+   * **`controllers/holaControllers.js`:**
+
+     ```javascript
+     // Export the `holaMundo` function, making it available for use in other modules (like your routes file).
+     exports.holaMundo = (req, res) => { 
+         console.log("hola desde controller"); // Log a message to the console.
+         res.send("Hola mundo desde controller"); // Send the response "Hola mundo desde controller" to the client.
+     };
+     ```
+
+   * **`routes/holaRoutes.js`:**
+
+     ```javascript
+     // Import the Express.js framework
+     const express = require("express");
+
+     // Create a new router object. This allows you to define routes in a modular way.
+     const router = express.Router();
+
+     // Import the controller that contains the logic for handling requests
+     const holaController = require("../controllers/holaControllers"); 
+
+     // Define a route for GET requests to the '/test' path.
+     // This route is handled by the `holaMundo` function in the `holaController`.
+     router.get("/test", holaController.holaMundo); 
+
+     // Export the router so it can be used in other parts of your application (like index.js)
+     module.exports = router;
+     ```
+
+   * **`index.js`:**
+
+     ```javascript
+     // Import the Express.js framework
+     const express = require("express");
+
+     // Import the routes defined in holaRoutes.js
+     const holaRoutes = require("./routes/holaRoutes"); 
+
+     // Create an instance of the Express application
+     const app = express(); 
+
+     // Define the port number for the server
+     const PORT = 3000; 
+
+     // Set the 'port' property in the Express app's settings (good for configuration)
+     app.set("port", PORT); 
+
+     // Define a route for GET requests to the '/hola' path
+     app.get("/hola", (req, res) => {
+         res.send("hola mundo"); // Send the response "hola mundo"
+     });
+
+     // Mount the holaRoutes router at the '/api/hola' path. 
+     // This means all routes defined in holaRoutes.js will be prefixed with '/api/hola'
+     app.use("/api/hola", holaRoutes); 
+
+     // Start the server and listen on the specified port
+     app.listen(PORT, () => {
+         console.log(`Listening on port ${PORT}`); // Log a message to the console
+     });
+     ```
+
+**Explanation:**
+
+* We define a controller function (`holaMundo`) in `holaControllers.js` to handle the logic for our API endpoint.
+* In `holaRoutes.js`, we create a router and define a route for GET requests to `/test`. This route is linked to the `holaMundo` controller function.
+* In `index.js`, we mount the `holaRoutes` router at the `/api/hola` path. This means that the full path to access our endpoint will be `/api/hola/test`.
+
 
 <!-- 
 Normalmente tenemos los modelos para interactuar con la base de datos, y los Servicios para interactuar con APIs
