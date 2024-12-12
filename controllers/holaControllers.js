@@ -1,5 +1,5 @@
-// Export the `holaMundo` function, making it available for use in other modules (like your routes file).
+// Exportar la función `holaMundo`, haciéndola disponible para su uso en otros módulos (como tu archivo de rutas).
 exports.holaMundo = (req, res) => { 
-    console.log("hola desde controller"); // Log a message to the console.
-    res.send("Hola mundo desde controller"); // Send the response "Hola mundo desde controller" to the client.
+    console.log("Hola desde Controllers"); // Registrar un mensaje en la consola.
+    res.send("Respuesta desde controllers"); // Enviar la respuesta "Respuesta desde controllers" al cliente.
 };

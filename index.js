@@ -1,28 +1,28 @@
-// Import the Express.js framework
+// Importar el framework Express.js
 const express = require("express");
 
-// Import the routes defined in holaRoutes.js
+// Importar las rutas definidas en holaRoutes.js
 const holaRoutes = require("./routes/holaRoutes"); 
 
-// Create an instance of the Express application
+// Crear una instancia de la aplicación Express
 const app = express(); 
 
-// Define the port number for the server
+// Definir el número de puerto para el servidor
 const PORT = 3000; 
 
-// Set the 'port' property in the Express app's settings (good for configuration)
+// Establecer la propiedad 'port' en la configuración de la aplicación Express (buena práctica para la configuración)
 app.set("port", PORT); 
 
-// Define a route for GET requests to the '/hola' path
+// Definir una ruta para las solicitudes GET a la ruta '/hola'
 app.get("/hola", (req, res) => {
-    res.send("hola mundo"); // Send the response "hola mundo"
+    res.send("Respuesta desde Hola"); // Enviar la respuesta "Respuesta desde /hola" al cliente
 });
 
-// Mount the holaRoutes router at the '/api/hola' path. 
-// This means all routes defined in holaRoutes.js will be prefixed with '/api/hola'
+// Montar el enrutador holaRoutes en la ruta '/api/hola'.
+// Esto significa que todas las rutas definidas en holaRoutes.js tendrán el prefijo '/api/hola'
 app.use("/api/hola", holaRoutes); 
 
-// Start the server and listen on the specified port
+// Iniciar el servidor y escuchar en el puerto especificado
 app.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}`); // Log a message to the console
+    console.log(`Escuchando en el puerto ${PORT}`); // Registrar un mensaje en la consola
 });
