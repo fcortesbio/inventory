@@ -3,6 +3,8 @@ const express = require("express");
 
 // Importar las rutas definidas en holaRoutes.js
 const holaRoutes = require("./routes/holaRoutes"); 
+const inventarioRoutes = require("./routes/inventario") // import inventarioRoutes
+
 
 // Crear una instancia de la aplicación Express
 const app = express(); 
@@ -20,7 +22,7 @@ app.get("/hola", (req, res) => {
 
 // Montar el enrutador holaRoutes en la ruta '/api/hola'.
 // Esto significa que todas las rutas definidas en holaRoutes.js tendrán el prefijo '/api/hola'
-app.use("/api/hola", holaRoutes); 
+app.use("/api/routers", holaRoutes); 
 
 // Iniciar el servidor y escuchar en el puerto especificado
 app.listen(PORT, () => {

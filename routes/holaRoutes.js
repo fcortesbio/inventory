@@ -13,10 +13,12 @@ router.get("", (req, res) => {
 
 // Importar el controlador que contiene la lógica para manejar las solicitudes
 const holaController = require("../controllers/holaControllers"); 
+const inventarioController = require("../controllers/inventario")
 
 // Definir una ruta para las solicitudes GET a la ruta '/test'.
 // Esta ruta es manejada por la función `holaMundo` en el `holaController`.
 router.get("/test", holaController.holaMundo); 
+router.get("/inventario", inventarioController.obtenerInventario) // current path: routers/controllers
 
 // Exportar el router para que pueda ser utilizado en otras partes de tu aplicación (como index.js)
 module.exports = router;
