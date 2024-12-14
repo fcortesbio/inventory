@@ -13,12 +13,4 @@ const InventarioSchema = new Schema({
 })
 
 
-// const InventarioSchema2 = new Schema({
-//     name: {
-        
-//     }
-// })
-
-// Contrato? 
-
 module.exports = mongoose.model("Herramienta", InventarioSchema)

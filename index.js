@@ -26,3 +26,4 @@ mongoose.connect("mongodb+srv://fcortesbio:easy2remember@mycluster.sckwr.mongodb
 app.listen(PORT, () => { // Iniciar el servidor y escuchar en el puerto especificado
     console.log(`Escuchando en el puerto ${PORT}`); // Registrar un mensaje en la consola
 });
+
