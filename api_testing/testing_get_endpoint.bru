@@ -4,8 +4,15 @@ meta {
   seq: 2
 }
 
-get {
-  url: http://127.0.0.1:3000/hola
-  body: none
+post {
+  url: http://127.0.0.1:3000/api/inventario
+  body: json
   auth: none
+}
+
+body:json {
+  {
+    nombre: "taladro";
+    unidades: 15
+  }
 }

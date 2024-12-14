@@ -7,17 +7,16 @@ const inventarioRoutes = require("./routes/inventario"); // import inventarioRou
 const app = express(); // Crear una instancia de la aplicación Express
 const PORT = 3000;   // Definir el número de puerto para el servidor
 app.set("port", PORT); // Establecer la propiedad 'port' en la configuración de la aplicación Express (buena práctica para la configuración)
-app.get("/hola", (req, res) => { // Definir una ruta para las solicitudes GET a la ruta '/hola'. 
+app.get("/hola", (req, res) => { // Definir una ruta para las solicitudes GET a la ruta '/hola'
     console.log("Hola, Mundo!")
     res.send("Respuesta desde index"); // Enviar la respuesta "Respuesta desde /hola" al cliente
 }); 
 
-app.use(express.json) // Middleware for json file read
+app.use(express.json()) // Middleware for json file read
 
 // Rutas
 app.use("/api/routers", holaRoutes); 
-app.use("api/inventario", inventarioRoutes);
-
+app.use("/api/inventario", inventarioRoutes);
 
 mongoose.connect("mongodb+srv://fcortesbio:easy2remember@mycluster.sckwr.mongodb.net/")
 // mongoose.connect(process.env.MONGO_URI)
